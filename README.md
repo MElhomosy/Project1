@@ -33,6 +33,8 @@ pip install SQLAlchemy
 pip install postgres
 pip install Flask
 pip install Flask-Migrate
+pip install psycopg2-binary
+pip install flask-sqlalchemy
 ```
 > **Note** - If we do not mention the specific version of a package, then the default latest stable package will be installed. 
 
@@ -41,6 +43,8 @@ You must have the **HTML**, **CSS**, and **Javascript** with [Bootstrap 3](https
 ```
 node -v
 npm -v
+npm init -y
+npm install bootstrap@3
 ```
 Install [Bootstrap 3](https://getbootstrap.com/docs/3.3/getting-started/) for the website's frontend:
 ```
@@ -156,6 +160,11 @@ git push -u origin master
 
 3. **Initialize and activate a virtualenv using:**
 ```
+py -m pip --version
+py -m pip install --upgrade pip
+py -m venv env
+.\env\Scripts\activate
+where python
 python -m virtualenv env
 source env/bin/activate
 ```
@@ -171,9 +180,9 @@ pip install -r requirements.txt
 
 5. **Run the development server:**
 ```
-export FLASK_APP=myapp
-export FLASK_ENV=development # enables debug mode
-python3 app.py
+set FLASK_APP=myapp
+set FLASK_ENV=development # enables debug mode
+py app.py
 ```
 
 6. **Verify on the Browser**<br>
