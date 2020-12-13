@@ -2,31 +2,16 @@
 # Imports
 #----------------------------------------------------------------------------#
 
-import json
-import dateutil.parser
-import babel
-from flask import Flask, render_template, request, Response, flash, redirect, url_for, jsonify, abort
-from flask_moment import Moment
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-import logging
-from logging import Formatter, FileHandler
-from flask_wtf import Form
-from forms import *
 from flask_migrate import Migrate
-import sys
+
 #----------------------------------------------------------------------------#
 # App Config.
 #----------------------------------------------------------------------------#
 
 app = Flask(__name__)
-moment = Moment(app)
-app.config.from_object('config')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres: @localhost:5432/fyyur1'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-
-# connect to a local postgresql database
-db = SQLAlchemy(app)
+db = SQLAlchemy()
 migrate = Migrate(app, db)
 
 #----------------------------------------------------------------------------#
@@ -49,19 +34,19 @@ class Venue(db.Model):
     seeking_talent      = db.Column(db.Boolean)
     seeking_description = db.Column(db.String(500))
     Show = db.relationship('Show', backref='venue', lazy=True)
-
-    def __init__(self, name, city, state, address, phone, image_link, facebook_link, genres, website, seeking_talent, seeking_description):
-        self.name                = name
-        self.city                = city
-        self.state               = state
-        self.address             = address
-        self.phone               = phone
-        self.image_link          = image_link
-        self.facebook_link       = facebook_link
-        self.genres              = genres
-        self.website             = website
-        self.seeking_talent      = seeking_talent
-        self.seeking_description = seeking_description
+    pass
+    # def __init__(self, name, city, state, address, phone, image_link, facebook_link, genres, website, seeking_talent, seeking_description):
+    #     self.name                = name
+    #     self.city                = city
+    #     self.state               = state
+    #     self.address             = address
+    #     self.phone               = phone
+    #     self.image_link          = image_link
+    #     self.facebook_link       = facebook_link
+    #     self.genres              = genres
+    #     self.website             = website
+    #     self.seeking_talent      = seeking_talent
+    #     self.seeking_description = seeking_description
     
     def __repr__(self):
         return f"<Venue {self.name}>"
@@ -83,7 +68,7 @@ class Artist(db.Model):
     seeking_venue       = db.Column(db.Boolean)
     seeking_description = db.Column(db.String(500))
     Show = db.relationship('Show', backref='artist', lazy=True)
-
+    pass
     # implement any missing fields, as a database migration using Flask-Migrate
 
 class Show(db.Model):
@@ -93,3 +78,4 @@ class Show(db.Model):
     venue_id = db.Column(db.Integer, db.ForeignKey('Venue.id'), nullable=False)
     artist_id = db.Column(db.Integer, db.ForeignKey('Artist.id'), nullable=False)
     start_time = db.Column(db.DateTime, nullable=False)
+    pass
